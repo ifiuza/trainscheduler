@@ -12,16 +12,31 @@
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />
     <style>
-        body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
 
     <!--Firebase Link-->
     <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-database.js"></script>
+
 </head>
 
 <body>
+
+
     <div class="container">
+
+        <!-- train routes table -->
         <div class="jumbotron">
             <h1 class="text-center">Train Routes</h1>
         </div>
@@ -34,7 +49,7 @@
                         <tr>
                             <th scope="col">Train Name</th>
                             <th scope="col">Destination</th>
-                            <th scope="col">Frequency (min)</th>
+                            <th scope="col">Frequency</th>
                             <th scope="col">Next Arrival</th>
                             <th scope="col">Minutes Away</th>
                         </tr>
@@ -45,21 +60,21 @@
                             <td id="destination"></td>
                             <td id="frequency"></td>
                             <td id="next-arrival"></td>
-                            <td id="minutes-away"></td>  
+                            <td id="minutes-away"></td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>
         </div>
+
         <br>
 
         <!--Add Train-->
         <div class="card border-primary mb-3">
             <div class="card-header text-white bg-primary mb-3">Add Train</div>
             <div class="card-body">
-                    <form method="POST" action="form-handler" onsubmit="return checkForm(this);">
-                 <!-- form class="needs-validation" novalidate> -->
+                <form method="POST" action="form-handler" onsubmit="return checkForm(this);">
+                    <!-- form class="needs-validation" novalidate> -->
                     <div class="form-group">
                         <label for="train-name">Train Name</label>
                         <input class="form-control" id="train-name" type="text" required>
@@ -70,11 +85,13 @@
                         <input class="form-control" id="train-destination" type="text" required>
                         <div class="invalid-feedback" id="invalid-destination"></div>
                     </div>
+
                     <div class="form-group" id="firstTime">
                         <label for="train-first-time">First Train Time (HH:mm - military time)</label>
                         <input class="form-control" id="train-first-time" type="text" required>
                         <div class="invalid-feedback" id="invalid-time"></div>
                     </div>
+
                     <div class="form-group">
                         <label for="train-frequency">Frequency (min)</label>
                         <input class="form-control" id="train-frequency" type="number" min="1" required>
@@ -84,16 +101,14 @@
                 </form>
             </div>
         </div>
-
-
     </div>
-
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery.js"></script>
-      <!-- Link to Moment.js -->
-  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <!-- Link to Moment.js -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
     <!--JavaScript-->
     <script src="javascript/logic.js"></script>
 </body>
+
 </html>
